@@ -2,19 +2,19 @@ import React from 'react';
 
 const Timeline = ({ data }) => {
 	return (
-		<React.Fragment>
+		<div className="timeline-item">
 			{data !== undefined &&
-				data.map((object) => {
+				data.map((object, index) => {
 					const { time, location, status_detail } = object;
 					return (
-						<React.Fragment>
-							<h1>{time}</h1>
+						<div className="item" key={index}>
+							<p>{time}</p>
 							<p>{location}</p>
 							<p>{status_detail}</p>
-						</React.Fragment>
+						</div>
 					);
 				})}
-		</React.Fragment>
+		</div>
 	);
 };
 

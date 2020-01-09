@@ -44,21 +44,22 @@ function App() {
 	);
 
 	const handleListItem = (index) => {
-		console.log('changes');
 		const scan = shipmentsData[index];
 		setTimeLineData(scan['scan']);
 	};
 
 	return (
 		<div className="App">
-			<header>
-				<Navbar />
-			</header>
+			<header>{/* <Navbar /> */}</header>
 			<content>
-				<Timeline data={timeLineData} />
+				{/* <StatusCardContainer statusViaCounters={statusViaCounters} /> */}
+				<div className="shipments-timeline">
+					<div className="timeline">
+						<Timeline data={timeLineData} />
+					</div>
 
-				<StatusCardContainer statusViaCounters={statusViaCounters} />
-				<ShipmentList shipmentsData={shipmentsData} handleListItem={handleListItem} />
+					<ShipmentList shipmentsData={shipmentsData} handleListItem={handleListItem} />
+				</div>
 			</content>
 		</div>
 	);

@@ -1,6 +1,7 @@
 .App {
-	font-family: sans-serif;
+	font-family: 'Roboto', sans-serif;
 	text-align: center;
+	font-size: 14px;
 }
 .navbar {
 	display: flex;
@@ -11,14 +12,39 @@
 	text-decoration: none;
 }
 
+/* shipments timeline view */
+content .shipments-timeline {
+	display: flex;
+	flex-flow: row wrap;
+}
+.timeline {
+	flex: 2;
+}
+
 /* shipmentlist table  */
 .shipmentlist-table {
-	width: 70%;
+	flex: 3;
+	border-collapse: separate;
+	border-spacing: 0 10px;
+	height: 600px;
+	overflow: scroll;
 }
-.shipmentlist-table tr {
-	border: 1px solid;
+
+.shipmentlist-table th {
+	padding: 0px 20px;
+}
+
+.shipmentlist-table td {
+	padding: 20px 0;
 }
 .shipmentlist-table th,
-.shipmentlist-table .td {
-	padding: 10px 20px;
+.shipmentlist-table td {
+	border-top: 1px solid rgb(144, 144, 144);
+	border-bottom: 1px solid rgb(144, 144, 144);
+}
+.shipmentlist-table td:first-child {
+	border-left: 1px solid rgb(144, 144, 144);
+}
+.shipmentlist-table td:last-child {
+	border-right: 1px solid rgb(144, 144, 144);
 }
