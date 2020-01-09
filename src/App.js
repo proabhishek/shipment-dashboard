@@ -5,25 +5,60 @@ import { fetchShipments } from './components/api';
 import Navbar from './components/Navbar';
 import StatusCardContainer from './components/Status';
 import ShipmentList from './components/ShipmentList';
+import Timeline from './components/Timeline';
 
 function App() {
-	const [ shipmentsData, setShipmentsData ] = useState('');
+	const [ shipmentsData, setShipmentsData ] = useState([]);
+	const [ timeLineData, setTimeLineData ] = useState([]);
+	const [ statusViaCounters, setStatusViaCounters ] = useState({});
 
 	useEffect(() => {
 		const getShipmentsData = async () => {
 			const data = await fetchShipments();
-			console.log(data);
+			setShipmentsData(data);
 		};
 		getShipmentsData();
 	}, []);
+
+	useEffect(
+		() => {
+			let counters = {};
+			for (const data of shipmentsData) {
+				if (counters[data['current_status_code']] !== undefined) {
+					counters[data['current_status_code']] += 1;
+				} else {
+					counters[data['current_status_code']] = 1;
+				}
+			}
+			setStatusViaCounters(counters);
+		},
+		[ shipmentsData ]
+	);
+
+	useEffect(
+		() => {
+			const scan = shipmentsData[0] ? shipmentsData[0] : '';
+			setTimeLineData(scan['scan']);
+		},
+		[ shipmentsData ]
+	);
+
+	const handleListItem = (index) => {
+		console.log('changes');
+		const scan = shipmentsData[index];
+		setTimeLineData(scan['scan']);
+	};
+
 	return (
 		<div className="App">
 			<header>
 				<Navbar />
 			</header>
 			<content>
-				<StatusCardContainer />
-				<ShipmentList />
+				<Timeline data={timeLineData} />
+
+				<StatusCardContainer statusViaCounters={statusViaCounters} />
+				<ShipmentList shipmentsData={shipmentsData} handleListItem={handleListItem} />
 			</content>
 		</div>
 	);

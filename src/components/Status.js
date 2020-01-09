@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const StatusCard = (props) => {
-	const { status, counter } = props.dataSource;
+const StatusCard = ({ status, counter }) => {
 	return (
 		<div className="statuscard">
 			<h4>{status}</h4>
@@ -10,22 +9,14 @@ const StatusCard = (props) => {
 	);
 };
 
-const StatusCardContainer = () => {
-	const defaultStatusCodes = [
-		{ status: 'DEL', counter: 916 },
-		{ status: 'DEL', counter: 916 },
-		{ status: 'DEL', counter: 916 },
-		{ status: 'DEL', counter: 916 },
-		{ status: 'DEL', counter: 916 }
-	];
-	const [ statusCodes, setStatusCodes ] = useState(defaultStatusCodes);
+const StatusCardContainer = ({ statusViaCounters }) => {
 	return (
 		<div className="statuscard-counters">
-			{statusCodes.map((cardData, index) => {
-				return <StatusCard dataSource={cardData} key={index} />;
+			{Object.keys(statusViaCounters).map((status, index) => {
+				return <StatusCard status={status} counter={statusViaCounters[status]} key={index} />;
 			})}
 		</div>
 	);
 };
 
-export default StatusCardContainer;
+export default React.memo(StatusCardContainer);

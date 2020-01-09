@@ -4,17 +4,18 @@ const url = `https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/ship
 const bearerToken = `tTU3gFVUdP`;
 const fetchShipments = async () => {
 	const shipments = await axios
-		.post(url, {
-			Authorization: {
-				Token: bearerToken
+		.post(
+			url,
+			{
+				email: 'theabhishek.srm@gmail.com'
 			},
-			body: {
-				email: 'abhishek@gmail.com'
+			{
+				headers: { Authorization: 'Bearer ' + bearerToken }
 			}
-		})
+		)
 		.then((res) => res)
-		.catch((err) => console.log(err));
-	return shipments;
+		.catch((err) => alert(JSON.stringify(err)));
+	return shipments.data.data;
 };
 
 export { fetchShipments };

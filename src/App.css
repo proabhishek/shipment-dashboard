@@ -1,12 +1,24 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+	font-family: sans-serif;
+	text-align: center;
 }
-.navbar{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
 }
-.navbar a:not(h5){
-  text-decoration: none;
+.navbar a:not(h5) {
+	text-decoration: none;
+}
+
+/* shipmentlist table  */
+.shipmentlist-table {
+	width: 70%;
+}
+.shipmentlist-table tr {
+	border: 1px solid;
+}
+.shipmentlist-table th,
+.shipmentlist-table .td {
+	padding: 10px 20px;
 }
