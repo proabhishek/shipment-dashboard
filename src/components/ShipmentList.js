@@ -2,48 +2,60 @@ import React from 'react';
 
 const ShipmentList = ({ shipmentsData, handleListItem }) => {
 	return (
-		<React.Fragment>
-			<table className="shipmentlist-table">
-				<thead>
-					<tr>
-						<th>AWB NUMBER</th>
-						<th>TRANSPORTER</th>
-						<th>SOURCE</th>
-						<th>DESTINATION</th>
-						<th>BRAND</th>
-						<th>START DATE</th>
-						<th>ETD</th>
-						<th>STATUS</th>
-					</tr>
-				</thead>
-				<tbody>
+		<div className="shipmentlist">
+			<div className="shipmentlist-table">
+				<div className="thead">
+					<div className="tr">
+						<p>AWB NUMBER</p>
+						<p>TRANSPORTER</p>
+						<p>SOURCE</p>
+						<p>DESTINATION</p>
+						<p>BRAND</p>
+						<p>START DATE</p>
+						<p>ETD</p>
+						<p>STATUS</p>
+					</div>
+				</div>
+				<div className="tbody" id="scrollbar">
 					{shipmentsData.length > 0 &&
 						shipmentsData.map((data, index) => {
 							const { awbno, carrier, from, to, pickup_date, extra_fields, current_status } = data;
 							return (
-								<tr key={index} onClick={() => handleListItem(index)}>
-									<td>{awbno}</td>
+								<div className="tr" key={index} onClick={() => handleListItem(index)}>
+									<p>{awbno}</p>
 									{/* transporter */}
-									<td>{carrier}</td>
-									<td>{from}</td>
-									<td>{to}</td>
+									<p>{carrier}</p>
+									<p>{from}</p>
+									<p>{to}</p>
 									{/* brand */}
-									<td>{carrier}</td>
-									<td>
+									<p>{carrier}</p>
+									<p>
 										{extra_fields !== undefined ? (
-											extra_fields['expected_delivery_date'].slice(12)
+											extra_fields['expected_delivery_date'].slice(0, 10)
 										) : (
 											''
 										)}
-									</td>
-									<td>{pickup_date ? pickup_date.slice(12) : ''}</td>
-									<td>{current_status}</td>
-								</tr>
+									</p>
+									<p>{pickup_date ? pickup_date.slice(0, 10) : ''}</p>
+									<p
+										className={
+											current_status === 'Delivered' ? (
+												'status-green'
+											) : current_status === 'Undelivered' ? (
+												'status-red'
+											) : (
+												'status-wait'
+											)
+										}
+									>
+										{current_status}
+									</p>
+								</div>
 							);
 						})}
-				</tbody>
-			</table>
-		</React.Fragment>
+				</div>
+			</div>
+		</div>
 	);
 };
 

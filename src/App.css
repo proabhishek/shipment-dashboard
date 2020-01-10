@@ -1,15 +1,63 @@
+body {
+	margin: 0px;
+}
 .App {
 	font-family: 'Roboto', sans-serif;
 	text-align: center;
 	font-size: 14px;
 }
 .navbar {
+	margin: 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	align-items: center;
+	background-color: white;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05), 0 3px 6px rgba(0, 0, 0, 0.05);
+	color: black;
+	padding: 0 30px;
 }
-.navbar a:not(h5) {
+.navbar li {
+	list-style: none;
+}
+.navbar li a:not(h5) {
 	text-decoration: none;
+	color: black;
+	font-size: 16px;
+	padding: 0 20px;
+}
+
+#logo {
+	display: flex;
+	margin-right: auto;
+}
+
+.statuscard {
+	background-color: rgb(213, 222, 255);
+	color: rgb(46, 91, 255);
+	padding: 5px;
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border-radius: 4px;
+	margin: 20px;
+	text-align: center;
+}
+
+.statuscard h2,
+.statuscard h4 {
+	margin: 0;
+}
+.statuscard h2 {
+	margin-top: 55%;
+}
+.statuscard h4 {
+	text-align: start;
+}
+.statuscard-counters {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 /* shipments timeline view */
@@ -22,29 +70,147 @@ content .shipments-timeline {
 }
 
 /* shipmentlist table  */
-.shipmentlist-table {
+.shipmentlist {
 	flex: 3;
-	border-collapse: separate;
-	border-spacing: 0 10px;
-	height: 600px;
-	overflow: scroll;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	height: min-content;
 }
 
-.shipmentlist-table th {
-	padding: 0px 20px;
+.shipmentlist-table {
+	width: 98%;
+	margin: 0 auto;
+	color: rgb(10, 8, 8);
+	margin-right: 10px;
 }
 
-.shipmentlist-table td {
-	padding: 20px 0;
+.shipmentlist-table .thead .tr,
+.shipmentlist-table .tbody .tr {
+	display: flex;
+	flex-direction: row;
 }
-.shipmentlist-table th,
-.shipmentlist-table td {
-	border-top: 1px solid rgb(144, 144, 144);
-	border-bottom: 1px solid rgb(144, 144, 144);
+.shipmentlist-table .tbody {
+	height: 500px;
+	overflow-y: scroll;
+	cursor: pointer;
 }
-.shipmentlist-table td:first-child {
-	border-left: 1px solid rgb(144, 144, 144);
+
+.shipmentlist-table .tbody .tr {
+	margin: 5px 0;
 }
-.shipmentlist-table td:last-child {
-	border-right: 1px solid rgb(144, 144, 144);
+
+.shipmentlist-table .thead p {
+	font-size: 8px;
+}
+
+.shipmentlist-table .tbody .tr p {
+	padding: 10px 0;
+	width: 12.5%;
+	text-align: start;
+	margin-left: 10px;
+}
+
+.shipmentlist-table .thead p {
+	width: 12.5%;
+	text-align: start;
+	margin-left: 10px;
+}
+
+.shipmentlist-table .thead {
+	width: 98%;
+}
+.shipmentlist-table .tbody {
+	font-size: 12px;
+}
+.shipmentlist-table .tbody .tr {
+	border: 1px solid rgb(213, 222, 255);
+}
+
+#scrollbar::-webkit-scrollbar-track {
+	background-color: rgb(213, 222, 255);
+}
+
+#scrollbar::-webkit-scrollbar {
+	width: 10px;
+	background-color: rgb(213, 222, 255);
+}
+
+#scrollbar::-webkit-scrollbar-thumb {
+	background-color: rgb(46, 91, 255);
+	/* background-image: -webkit-gradient(
+		linear,
+		0 0,
+		0 100%,
+		color-stop(.5, rgba(255, 255, 255, .2)),
+		color-stop(.5, transparent),
+		to(transparent)
+	); */
+}
+.status-green {
+	color: rgb(141, 210, 142);
+}
+.status-red {
+	color: rgb(240, 30, 30);
+}
+.status-wait {
+	color: rgb(206, 206, 7);
+}
+
+/* timeline */
+.timeline {
+	position: relative;
+}
+
+.timeline-item {
+	font-size: 12px;
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-flow: column wrap;
+}
+.item {
+	width: 350px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: 10px;
+}
+.item p:first-child {
+	flex: 2 0 50%;
+	text-align: start;
+	margin-left: 10px;
+}
+.item p:not(:first-child) {
+	flex: 1 0 20%;
+}
+
+.item:before {
+	content: ' ';
+	background: #d4d9df;
+	display: inline-block;
+	position: absolute;
+	left: 29px;
+	width: 2px;
+	height: 100%;
+	z-index: 400;
+}
+
+.item:after {
+	background: white;
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	border: 3px solid #22c0e8;
+	left: 20px;
+	width: 20px;
+	height: 20px;
+	z-index: 400;
+}
+.item {
+	margin: 20px 0;
+	padding-left: 20px;
+}
+
+.timeline-body {
+	display: flex;
 }

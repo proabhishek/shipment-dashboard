@@ -50,14 +50,16 @@ function App() {
 
 	return (
 		<div className="App">
-			<header>{/* <Navbar /> */}</header>
+			<header>
+				{' '}
+				<Navbar />{' '}
+			</header>
 			<content>
-				{/* <StatusCardContainer statusViaCounters={statusViaCounters} /> */}
+				<StatusCardContainer statusViaCounters={statusViaCounters} />
 				<div className="shipments-timeline">
 					<div className="timeline">
-						<Timeline data={timeLineData} />
+						<Timeline data={timeLineData} className="timeline-body" />
 					</div>
-
 					<ShipmentList shipmentsData={shipmentsData} handleListItem={handleListItem} />
 				</div>
 			</content>
