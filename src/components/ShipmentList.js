@@ -22,7 +22,7 @@ const ShipmentList = ({ shipmentsData, handleListItem }) => {
 							const { awbno, carrier, from, to, pickup_date, extra_fields, current_status } = data;
 							return (
 								<div className="tr" key={index} onClick={() => handleListItem(index)}>
-									<p>{awbno}</p>
+									<p>{"#"+awbno}</p>
 									{/* transporter */}
 									<p>{carrier}</p>
 									<p>{from}</p>

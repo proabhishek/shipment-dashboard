@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { fetchShipments } from './components/api';
 
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import StatusCardContainer from './components/Status';
 import ShipmentList from './components/ShipmentList';
 import Timeline from './components/Timeline';
